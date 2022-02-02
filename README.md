@@ -16,4 +16,9 @@ Any time someone is confounded by an error when the code makes sense and should 
 
 01-31-2022
 - My register and login user endpoints are functioning and it's generating a token which means my auth is functioning without any glitches. 
+
+02-01-2022
+- Success with my DB associations. Got build.js and controllers working. Need only to test partController and test the delete and update components accordingly. 
+- Successfully, with plenty of assistance, figured out heroku and pushed my app. 
+
 ### `To Be Continued`
