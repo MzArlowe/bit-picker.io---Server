@@ -1,0 +1,34 @@
+{
+  "name": "bit-picker.io",
+  "version": "1.0.0",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js",
+    "dev": "nodemon"
+  },
+  "author": "Ben",
+  "license": "ISC",
+  "description": "Server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MzArlowe/bit-picker.io---Server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MzArlowe/bit-picker.io---Server/issues"
+  },
+  "homepage": "https://github.com/MzArlowe/bit-picker.io---Server#readme",
+  "dependencies": {
+    "add": "^2.0.6",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "2.0.15",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.12.0-alpha.1"
+  }
+}
