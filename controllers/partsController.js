@@ -6,14 +6,13 @@ const { models } = require("../models");
 router.post("/create", validateJWT, async (req, res) => {
     // const { id } = req.user;
 
-    const { name, description, url, price, buildId, owner } = req.body.part;
+    const { name, description, url, price, buildId } = req.body.part;
     const NewPart = {
         name,
         description,
         url,
         price,
-        // buildId: buildId,
-        owner: owner,
+        buildId: buildId,
     };
     try {
         const part = await models.PartsModel.create(NewPart);
