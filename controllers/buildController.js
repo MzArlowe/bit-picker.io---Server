@@ -11,11 +11,12 @@ router.post("/create", validateJWT, async (req, res) => {
         name,
         complete,
         totalPrice,
+        userId: id
     };
     try {
         const build = await models.BuildModel.create(NewBuild);
         res.status(200).json({
-            message: "Component Added",
+            message: "Build Created",
             build: build,
         })
     } catch (err) {
