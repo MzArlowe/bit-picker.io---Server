@@ -30,13 +30,13 @@ router.get("/:id", validateJWT, async (req, res) => {
 
     const { id } = req.params;
 
-    const query = {
-        where: {
-            buildId: id,
-            userId: req.user.id
-        },
-    }
     try {
+        const query = {
+            where: {
+                buildId: id,
+                userId: req.user.id
+            },
+        }
         const parts = await models.PartsModel.findAll(query);
         res.status(200).json({
             message: "all parts",
