@@ -4,15 +4,15 @@ let validateJWT = require("../middleware/validate-jwt");
 const { models } = require("../models");
 
 router.post("/create", validateJWT, async (req, res) => {
-    const { id } = req.user;
+    // const { id } = req.user;
 
-    const { name, description, url, price } = req.body.part;
+    const { name, description, url, price, buildId } = req.body.part;
     const NewPart = {
         name,
         description,
         url,
         price,
-        // userId: id
+        buildId: id
     };
     try {
         const part = await models.PartsModel.create(NewPart);
