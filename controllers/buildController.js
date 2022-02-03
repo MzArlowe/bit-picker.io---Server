@@ -6,12 +6,11 @@ const { models } = require("../models");
 router.post("/create", validateJWT, async (req, res) => {
     const { id } = req.user;
 
-    const { name, complete, totalPrice, owner } = req.body.buildList;
+    const { name, complete, totalPrice } = req.body.buildList;
     const NewBuild = {
         name,
         complete,
         totalPrice,
-        owner
     };
     try {
         const build = await models.BuildModel.create(NewBuild);
@@ -48,7 +47,7 @@ router.get("/", validateJWT, async (req, res) => {
 });
 
 router.put("/update/:id", validateJWT, async (req, res) => {
-    const { name, description, url, price } = req.body.build;
+    const { name, complete, totalPrice, owner } = req.body.build;
     const buildId = req.params.id;
     const { id } = req.user;
 

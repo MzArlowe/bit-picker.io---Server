@@ -12,7 +12,7 @@ router.post("/create", validateJWT, async (req, res) => {
         description,
         url,
         price,
-        buildId: buildId,
+        // buildId: buildId,
         owner: owner,
     };
     try {

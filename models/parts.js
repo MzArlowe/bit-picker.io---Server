@@ -27,7 +27,7 @@ const Parts = db.define("parts", {
         allowNull: false,
     },
     owner: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
 }
