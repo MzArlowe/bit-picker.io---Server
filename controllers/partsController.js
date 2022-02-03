@@ -39,7 +39,7 @@ router.get("/:id", validateJWT, async (req, res) => {
     try {
         const parts = await models.PartsModel.findAll(query);
         res.status(200).json({
-            message: "parts added",
+            message: "all parts",
             parts: parts,
         })
     } catch (err) {

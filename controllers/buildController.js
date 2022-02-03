@@ -28,13 +28,9 @@ router.post("/create", validateJWT, async (req, res) => {
 );
 
 router.get("/", validateJWT, async (req, res) => {
-
     const { id } = req.user;
-
     const query = {
-        where: {
-            userId: id
-        },
+        where: { userId: id },
     }
     try {
         const builds = await models.BuildModel.findAll(query);
