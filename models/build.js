@@ -19,7 +19,12 @@ const buildList = db.define ("build", { //Ask if I have to add the Parts Associa
         },
         totalPrice: {
             type: DataTypes.FLOAT,
+            allowNull: false
     },
+    owner: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 }
 );
 

@@ -26,6 +26,10 @@ const Parts = db.define("parts", {
         type: DataTypes.FLOAT,
         allowNull: false,
     },
+    owner: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 }
 );
 
