@@ -13,7 +13,7 @@ app.use("/parts", controllers.partsController);
 // app.use("/cpu", controllers.cpuController);
 
 dbConnection.authenticate()
-.then(() => dbConnection.sync({/*force: true*/}))
+.then(() => dbConnection.sync({force: true}))
 
 .then(() => {
   // console.log(process.env.NODE_ENV)

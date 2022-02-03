@@ -26,10 +26,6 @@ const Parts = db.define("parts", {
         type: DataTypes.FLOAT,
         allowNull: false,
     },
-    buildId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
 }
 );
 
