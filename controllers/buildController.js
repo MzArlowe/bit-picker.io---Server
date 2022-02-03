@@ -11,7 +11,6 @@ router.post("/create", validateJWT, async (req, res) => {
         name,
         complete,
         totalPrice,
-        price,
         userId: id,
     };
     try {
@@ -62,9 +61,8 @@ router.put("/update/:id", validateJWT, async (req, res) => {
 
     const updatedBuild = {
         name: name,
-        description: description,
-        url: url,
-        price: price,
+        complete: complete,
+        totalPrice: totalPrice,
         // userId: id,
         // buildId
     };
