@@ -7,6 +7,7 @@ const Parts = db.define("parts", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
     },
     name: {
@@ -23,6 +24,10 @@ const Parts = db.define("parts", {
     },
     price: {
         type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    buildId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 }

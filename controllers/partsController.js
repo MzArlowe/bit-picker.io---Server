@@ -12,7 +12,7 @@ router.post("/create", validateJWT, async (req, res) => {
         description,
         url,
         price,
-        userId: id
+        // userId: id
     };
     try {
         const part = await models.PartsModel.create(NewPart);
