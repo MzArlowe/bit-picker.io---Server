@@ -6,11 +6,11 @@ const { models } = require("../models");
 router.post("/create", validateJWT, async (req, res) => {
     const { id } = req.user;
 
-    const { name, description, url, price } = req.body.buildList;
+    const { name, complete, totalPrice } = req.body.buildList;
     const NewBuild = {
         name,
-        description,
-        url,
+        complete,
+        totalPrice,
         price,
         userId: id,
     };
@@ -24,7 +24,7 @@ router.post("/create", validateJWT, async (req, res) => {
         console.log(err);
         res.status(500).json({ error: err });
     }
-    
+
 }
 );
 
