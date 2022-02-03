@@ -1,7 +1,7 @@
 # BitPicker.io
 For the serious builder who needs a little extra
 
-## Available Scripts
+## Changes by Date
 
 This ReadMe is a work in progress. 
 
@@ -21,4 +21,6 @@ Any time someone is confounded by an error when the code makes sense and should 
 - Success with my DB associations. Got build.js and controllers working. Need only to test partController and test the delete and update components accordingly. 
 - Successfully, with plenty of assistance, figured out heroku and pushed my app. 
 
+02/03/2022
+- Finally remapped my associations and got my buildId to post in Postman. Now on to figuring out GET, DELETE, & PUT. Then server will be finished.
 ### `To Be Continued`
