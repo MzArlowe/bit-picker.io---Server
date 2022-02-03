@@ -29,17 +29,30 @@ router.post("/create", validateJWT, async (req, res) => {
 router.get("/:id", validateJWT, async (req, res) => {
 
     const { id } = req.params;
-
     try {
-        const query = {
+        const query = await models.BuildModel.findOne({
             where: {
-                buildId: id,
-                userId: req.user.id
-            },
-        }
-        const parts = await models.PartsModel.findAll(query);
+                id: id,
+            }
+        })
+
+        const parts = await models.PartsModel.findAll({
+            where: {
+                buildId: id
+            }
+        })
+
+    // try {
+    //     const query = {
+    //         where: {
+    //             buildId: id,
+    //             userId: req.user.id
+    //         },
+    //     }
+    //     const parts = await models.PartsModel.findAll(query);
         res.status(200).json({
             message: "all parts",
+            build: query,
             parts: parts,
         })
     } catch (err) {
