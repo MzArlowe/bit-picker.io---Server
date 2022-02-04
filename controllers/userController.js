@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { UniqueConstraintError } = require("sequelize/lib/errors");
 const { UserModel } = require("../models").models;
+let validateJWT = require("../middleware/validate-jwt");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const models = require("../models");
@@ -95,7 +96,7 @@ router.post("/login", async (req, res) => {
 });
 
 //Admin Routes
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", validateJWT, async (req, res) => {
   const userId = req.params.id;
   const { id } = req.user.role;
 
@@ -103,6 +104,7 @@ router.delete("/delete/:id", async (req, res) => {
     const query = {
       where: {
         id: userId,
+        role: id
       }
     };
 
@@ -121,7 +123,7 @@ router.delete("/delete/:id", async (req, res) => {
       });
     }
   } else {
-    res.status(200).json({ message: "You are not Authorized to delete user information. Contact an admin to delete." })
+    res.status(403).json({ message: "You are not Authorized to delete user information. Contact an admin to delete." })
   };
 });
 

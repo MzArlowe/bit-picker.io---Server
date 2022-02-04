@@ -5,6 +5,8 @@ For the serious builder who needs a little extra
 
 This ReadMe is a work in progress. 
 
+# Server Build
+
 01-28-2022
 - The server has CRUD but no endpoints have been tested. Next step is to code DB Association and map out my code after DB is running. 
 - This is all very exciting. 
@@ -21,7 +23,13 @@ Any time someone is confounded by an error when the code makes sense and should 
 - Success with my DB associations. Got build.js and controllers working. Need only to test partController and test the delete and update components accordingly. 
 - Successfully, with plenty of assistance, figured out heroku and pushed my app. 
 
-02/03/2022
+02-03-2022
 - Finally remapped my associations and got my buildId to post in Postman. Now on to figuring out GET, DELETE, & PUT. Then server will be finished.
-- Server not finished. Discovered there's more to Admin that I need to learn. More on that tomorrow. Both GETS are done. Only one PUT is finished and the other is making me made. Have not tested either of my deletes. Also a job for tomorrow. 
+- Server not finished. Discovered there's more to Admin that I need to learn. More on that tomorrow. Both GETS are done. Only one PUT is finished and the other is making me made. Have not tested either of my deletes. Also a job for tomorrow.
+
+02-04-2022
+- FINAL SERVER CHANGES MADE AND EVERYTHING WORKS! Tested all three deletes and final PUT. Server Complete. 
+
+# Client Build
+
 ### `To Be Continued`
