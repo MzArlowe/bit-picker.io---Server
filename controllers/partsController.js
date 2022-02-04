@@ -48,7 +48,9 @@ router.get("/:id", validateJWT, async (req, res) => {
             parts: parts,
         })
     } catch (err) {
-        res.status(500).json({ error: err, message: "Failed to get parts" });
+        res.status(500).json({
+            message: "Failed to get parts",
+        });
     }
 });
 
