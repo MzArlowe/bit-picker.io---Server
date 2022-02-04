@@ -53,7 +53,7 @@ router.get("/:id", validateJWT, async (req, res) => {
 });
 
 router.put("/update/:id", validateJWT, async (req, res) => {
-    const { name, description, url, price, partsId } = req.body.part;
+    const { name, description, url, price, buildId } = req.body.part;
     const partsId = req.params.id;
     const { id } = req.user;
 
@@ -61,6 +61,7 @@ router.put("/update/:id", validateJWT, async (req, res) => {
         const query = {
             where: {
                 id: partsId,
+                buildId: buildId,
             }
         };
         const updatedPart = {
@@ -68,24 +69,31 @@ router.put("/update/:id", validateJWT, async (req, res) => {
             description: description,
             url: url,
             price: price,
-            partsId: id
         };
         console.log(updatedPart);
-        const partUpdated = await models.PartsModel.update(updatedPart, query);
-        res.status(200).json({
-            message: "part Updated",
-            build: query,
-            part: partUpdated,
-        })
-        
+        try {
+            const partUpdated = await models.PartsModel.update(updatedPart, query);
+            res.status(200).json({
+                message: "part Updated",
+                build: query,
+                part: partUpdated,
+            })
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({
+                message: "cannot update part",
+            })
+        }
+
     } catch (err) {
+        console.log(err)
         res.status(500).json({ error: err });
     }
 },
 );
 //Delete Item from Sections
 router.delete("/delete/:id", validateJWT, async (req, res) => {
-    const partId = req.params.id;
+    const partsId = req.params.id;
     const { id } = req.user;
     // console.log(id);
     // console.log(req.params, 'req.params');
