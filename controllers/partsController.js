@@ -111,7 +111,7 @@ router.delete("/delete/:id", validateJWT, async (req, res) => {
         const deletedPart = await models.PartsModel.destroy(query);
         res.status(200).json({
             message: "Part Removed",
-            build: deletedPart,
+            parts: deletedPart,
         })
     } catch (err) {
         res.status(500).json({ error: err });

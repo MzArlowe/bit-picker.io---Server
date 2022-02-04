@@ -109,28 +109,4 @@ router.delete("/delete/:id", validateJWT, async (req, res) => {
     }
 }
 );
-//Delete Item from Sections
-router.delete("/delete/:id", validateJWT, async (req, res) => {
-    const partId = req.params.id;
-    const { id } = req.user;
-    // console.log(id);
-    // console.log(req.params, 'req.params');
-
-    const query = {
-        where: {
-            id: partId,
-            buildId: id
-        }
-    };
-    try {
-        const deletedPart = await models.PartsModel.destroy(query);
-        res.status(200).json({
-            message: "Part Removed",
-            build: deletedPart,
-        })
-    } catch (err) {
-        res.status(500).json({ error: err });
-    }
-}
-);
 module.exports = router;
