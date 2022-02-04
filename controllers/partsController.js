@@ -53,7 +53,7 @@ router.get("/:id", validateJWT, async (req, res) => {
 });
 
 router.put("/update/:id", validateJWT, async (req, res) => {
-    const { name, description, url, price, owner, } = req.body.part;
+    const { name, description, url, price, partsId } = req.body.part;
     const partsId = req.params.id;
     const { id } = req.user;
 
