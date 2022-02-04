@@ -23,4 +23,5 @@ Any time someone is confounded by an error when the code makes sense and should 
 
 02/03/2022
 - Finally remapped my associations and got my buildId to post in Postman. Now on to figuring out GET, DELETE, & PUT. Then server will be finished.
+- Server not finished. Discovered there's more to Admin that I need to learn. More on that tomorrow. Both GETS are done. Only one PUT is finished and the other is making me made. Have not tested either of my deletes. Also a job for tomorrow. 
 ### `To Be Continued`
