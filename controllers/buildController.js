@@ -23,23 +23,35 @@ router.post("/create", validateJWT, async (req, res) => {
         console.log(err);
         res.status(500).json({ error: err });
     }
+});
 
-}
-);
+router.get("/:id", validateJWT, async (req, res) => {
 
-router.get("/", validateJWT, async (req, res) => {
-    const { id } = req.user;
-    const query = {
-        where: { userId: id },
-    }
+    const { id } = req.params;
+
     try {
-        const builds = await models.BuildModel.findAll(query);
+        const query = await models.UserModel.findOne({
+            where: {
+                id: id,
+            }
+        })
+
+        const builds = await models.BuildModel.findAll({
+            where: {
+                userId: id
+            }
+        })
+
         res.status(200).json({
             message: "Builds found",
+            user: query,
             builds: builds,
         })
     } catch (err) {
-        res.status(500).json({ error: err, message: "Failed to get builds" });
+        console.log(err);
+        res.status(500).json({
+            message: "Failed to get builds", 
+        })
     }
 });
 
