@@ -94,6 +94,7 @@ router.put("/update/:id", validateJWT, async (req, res) => {
 },
 );
 //Delete Item from Build
+
 router.delete("/delete/:id", validateJWT, async (req, res) => {
     const partsId = req.params.id;
     const { id } = req.user;
@@ -102,20 +103,25 @@ router.delete("/delete/:id", validateJWT, async (req, res) => {
         const query = {
             where: {
                 id: partsId,
+                buildId: id,
             }
         };
-        const deletedPart = await models.PartsModel.destroy(query);
-        res.status(200).json({
-            message: "Part Removed",
-            build: query,
-            part: deletedPart,
-        })
+        try {
+            const partHaveDeleted = await models.PartsModel.destroy(query);
+            res.status(200).json({
+                message: "part Deleted",
+                part: partHaveDeleted,
+            })
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({
+                message: "cannot delete part",
+            })
+        }
+
     } catch (err) {
-        res.status(500).json({
-            error: err 
-        message: "Failed to delete part"
-        });
+        console.log(err)
+        res.status(500).json({ error: err });
     }
-}
-);
+});
 module.exports = router;
