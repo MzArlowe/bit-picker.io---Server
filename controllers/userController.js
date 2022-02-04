@@ -111,11 +111,13 @@ router.delete("/delete/:id", async (req, res) => {
       res.status(200).json({
         message: `${userId} successfully deleted`,
         query: query,
+        user: deleteUser,
       });
     } catch (err) {
       console.log(err);
       res.status(500).json({
         message: "Failed to delete user",
+        
       });
     }
   } else {
