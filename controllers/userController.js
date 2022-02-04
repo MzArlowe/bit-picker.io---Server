@@ -97,6 +97,7 @@ router.post("/login", async (req, res) => {
 //Admin Routes
 router.delete("/delete/:id", async (req, res) => {
   const userId = req.params.id;
+  const { id } = req.user.role;
 
   if (req.user.admin) {
     const query = {
