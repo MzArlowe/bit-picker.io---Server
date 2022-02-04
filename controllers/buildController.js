@@ -119,7 +119,7 @@ router.delete("/delete/:id", validateJWT, async (req, res) => {
     const query = {
         where: {
             id: partId,
-            owner: id
+            buildId: id
         }
     };
     try {
