@@ -42,14 +42,6 @@ router.get("/:id", validateJWT, async (req, res) => {
             }
         })
 
-    // try {
-    //     const query = {
-    //         where: {
-    //             buildId: id,
-    //             userId: req.user.id
-    //         },
-    //     }
-    //     const parts = await models.PartsModel.findAll(query);
         res.status(200).json({
             message: "all parts",
             build: query,
@@ -65,29 +57,27 @@ router.put("/update/:id", validateJWT, async (req, res) => {
     const partsId = req.params.id;
     const { id } = req.user;
 
-    const query = {
-        where: {
-            id: partsId,
-            owner: id
-        }
-    };
-
-    const updatedPart = {
-        name: name,
-        description: description,
-        url: url,
-        price: price,
-        owner: owner
-        // owner: id
-    };
-    console.log(updatedPart);
-
     try {
+        const query = {
+            where: {
+                id: partsId,
+            }
+        };
+        const updatedPart = {
+            name: name,
+            description: description,
+            url: url,
+            price: price,
+            partsId: id
+        };
+        console.log(updatedPart);
         const partUpdated = await models.PartsModel.update(updatedPart, query);
         res.status(200).json({
             message: "part Updated",
+            build: query,
             part: partUpdated,
         })
+        
     } catch (err) {
         res.status(500).json({ error: err });
     }
