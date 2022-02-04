@@ -103,24 +103,23 @@ router.delete("/delete/:id", async (req, res) => {
       where: {
         id: userId,
       }
-
-  try {
-        const deleteUser = await UserModel.destroy(query);
-        res.status(200).json({
-          message: `${userId} successfully deleted`,
-          query: query,
-        });
-      } catch(err) {
-        console.log(err);
-        res.status(500).json({
-          message: "Failed to delete user",
-        });
-      } else {
-        res.status(200).json({ message: "You are not Authorized to delete user information. Contact an admin to delete." })
-      };
     };
 
-  }
-};
+    try {
+      const deleteUser = await UserModel.destroy(query);
+      res.status(200).json({
+        message: `${userId} successfully deleted`,
+        query: query,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Failed to delete user",
+      });
+    }
+  } else {
+    res.status(200).json({ message: "You are not Authorized to delete user information. Contact an admin to delete." })
+  };
+});
 
 module.exports = router;
