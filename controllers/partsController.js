@@ -93,27 +93,28 @@ router.put("/update/:id", validateJWT, async (req, res) => {
     }
 },
 );
-//Delete Item from Sections
+//Delete Item from Build
 router.delete("/delete/:id", validateJWT, async (req, res) => {
     const partsId = req.params.id;
     const { id } = req.user;
-    // console.log(id);
-    // console.log(req.params, 'req.params');
 
-    const query = {
-        where: {
-            id: partId,
-            owner: id
-        }
-    };
     try {
+        const query = {
+            where: {
+                id: partsId,
+            }
+        };
         const deletedPart = await models.PartsModel.destroy(query);
         res.status(200).json({
             message: "Part Removed",
+            build: query,
             part: deletedPart,
         })
     } catch (err) {
-        res.status(500).json({ error: err });
+        res.status(500).json({
+            error: err 
+        message: "Failed to delete part"
+        });
     }
 }
 );
