@@ -63,7 +63,7 @@ router.put("/update/:id", validateJWT, async (req, res) => {
     const query = {
         where: {
             id: buildId,
-            userId: userId
+            userId: userId,
         }
     };
 
@@ -73,7 +73,6 @@ router.put("/update/:id", validateJWT, async (req, res) => {
         totalPrice: totalPrice,
     };
     console.log(updatedBuild);
-
     try {
         const updatedBuild = await models.BuildModel.update(updatedBuild, query);
         res.status(200).json({
