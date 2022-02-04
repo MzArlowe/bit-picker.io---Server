@@ -56,14 +56,14 @@ router.get("/:id", validateJWT, async (req, res) => {
 });
 
 router.put("/update/:id", validateJWT, async (req, res) => {
-    const { name, complete, totalPrice, userId } = req.body.build;
+    const { name, complete, totalPrice } = req.body.build;
     const buildId = req.params.id;
     const { id } = req.user;
 
     const query = {
         where: {
             id: buildId,
-            userId: userId,
+            userId: id,
         }
     };
 
@@ -80,7 +80,7 @@ router.put("/update/:id", validateJWT, async (req, res) => {
             user: query,
             build: updatedBuild,
         })
-    } catch (err) {
+    } catch (error) {
         res.status(500).json({
             message: "Failed to update build",
         });

@@ -57,6 +57,8 @@ router.post("/register", async (req, res) => {
   }
   });
 
+  // router.delete('/delete/:id', async (req, res) => {')
+
   router.post("/login", async (req, res) => {
     let { email, password } = req.body.user;
   
