@@ -74,11 +74,11 @@ router.put("/update/:id", validateJWT, async (req, res) => {
         };
         console.log(updatedPart);
         try {
-            const partUpdated = await models.PartsModel.update(updatedPart, query);
+            const partHaveUpdated = await models.PartsModel.update(updatedPart, query);
             res.status(200).json({
                 message: "part Updated",
                 build: query,
-                part: partUpdated,
+                part: partHaveUpdated,
             })
         } catch (error) {
             console.log(error);
