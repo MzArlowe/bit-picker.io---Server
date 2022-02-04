@@ -74,11 +74,11 @@ router.put("/update/:id", validateJWT, async (req, res) => {
     };
     console.log(updatedBuild);
     try {
-        const updatedBuild = await models.BuildModel.update(updatedBuild, query);
+        const updated = await models.BuildModel.update(updatedBuild, query);
         res.status(200).json({
             message: "Build Updated",
             user: query,
-            build: updatedBuild,
+            build: updated,
         })
     } catch (error) {
         res.status(500).json({
