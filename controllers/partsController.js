@@ -99,7 +99,6 @@ router.delete("/delete/:id", validateJWT, async (req, res) => {
     const partsId = req.params.id;
     const { id } = req.user;
 
-    try {
         const query = {
             where: {
                 id: partsId,
@@ -118,10 +117,10 @@ router.delete("/delete/:id", validateJWT, async (req, res) => {
                 message: "cannot delete part",
             })
         }
-
+    
     } catch (err) {
         console.log(err)
         res.status(500).json({ error: err });
     }
-});
+);
 module.exports = router;
