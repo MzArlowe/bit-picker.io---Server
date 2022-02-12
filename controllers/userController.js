@@ -8,10 +8,9 @@ const models = require("../models");
 
 router.post("/register", async (req, res) => {
 
-  let { role, email, password } = req.body.user;
+  let { email, password } = req.body;
   try {
     const User = await UserModel.create({
-      role: role,
       email,
       password: bcrypt.hashSync(password, 13),
 
