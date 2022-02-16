@@ -6,9 +6,10 @@ const { models } = require("../models");
 router.post("/create", validateJWT, async (req, res) => {
     const { id } = req.user;
 
-    const { name, complete, totalPrice } = req.body.buildList;
+    const { name, description, complete, totalPrice } = req.body.buildList;
     const NewBuild = {
         name,
+        description,
         complete,
         totalPrice,
         userId: id
