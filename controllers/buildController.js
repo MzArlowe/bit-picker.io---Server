@@ -26,9 +26,10 @@ router.post("/create", validateJWT, async (req, res) => {
     }
 });
 
-router.get("/:id", validateJWT, async (req, res) => {
+router.get("/", validateJWT, async (req, res) => {
 
-    const { id } = req.params;
+    // const { id } = req.params;
+    const { id } = req.user;
 
     try {
         const query = await models.UserModel.findOne({
