@@ -26,28 +26,43 @@ router.post("/create", validateJWT, async (req, res) => {
 }
 );
 
-router.get("/:id", validateJWT, async (req, res) => {
+router.get("/:id", validateJWT, async (req, res) => { // Finds singular part by id
 
     const { id } = req.params;
     try {
-        const query = await models.BuildModel.findOne({
-            where: {
-                id: id,
-            }
-        })
 
-        const parts = await models.PartsModel.findAll({
+        const part = await models.PartsModel.findOne({
             where: {
-                buildId: id
+                id
             }
         })
 
         res.status(200).json({
-            message: "all parts",
-            build: query,
-            parts: parts,
+            message: "part found",
+            part
         })
     } catch (err) {
+        res.status(500).json({
+            message: "Failed to get part",
+        });
+    }
+});
+
+router.get("/getall/:id", validateJWT, async (req, res) => { //get all parts for a build by id
+    const buildId = req.params.id;
+    try {
+        const parts = await models.PartsModel.findAll({
+            where: {
+                buildId: buildId
+            }
+        })
+
+        res.status(200).json({
+            message: "Parts found",
+            parts
+        })
+    }
+    catch (err) {
         res.status(500).json({
             message: "Failed to get parts",
         });
@@ -55,7 +70,7 @@ router.get("/:id", validateJWT, async (req, res) => {
 });
 
 router.put("/update/:id", validateJWT, async (req, res) => {
-    const { name, description, url, price, buildId } = req.body.part;
+    const { name, description, url, price } = req.body.part;
     const partsId = req.params.id;
     const { id } = req.user;
 
@@ -63,7 +78,6 @@ router.put("/update/:id", validateJWT, async (req, res) => {
         const query = {
             where: {
                 id: partsId,
-                buildId: buildId,
             }
         };
         const updatedPart = {
@@ -98,9 +112,7 @@ router.put("/update/:id", validateJWT, async (req, res) => {
 router.delete("/delete/:id", validateJWT, async (req, res) => {
     const partId = req.params.id;
     const { id } = req.user;
-    // console.log(id);
-    // console.log(req.params, 'req.params');
-
+   
     const query = {
         where: {
             id: partId,
